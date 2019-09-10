@@ -1,0 +1,27 @@
+{
+  "name": "userloginreg",
+  "version": "1.0.0",
+  "description": "user login and registration using node js, express js , mongoose and passport js",
+  "main": "app.js",
+  "scripts": {
+    "test": "login and registration "
+  },
+  "author": "Saranraj B",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.18.2",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.6", 
+    "mongoose": "^5.0.7",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.15.1"
+  }
+}

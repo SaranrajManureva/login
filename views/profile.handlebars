@@ -1,0 +1,95 @@
+<head> 
+	<link rel="stylesheet" type="text/css" href="css/main.css"> 
+</head>
+ <h2 class="page-header">Your Profile <input type="button" id="edit-profile" class="btn btn-default" value="Edit"><input type="button" id="edit-cancel" class="btn btn-default" value="Cancel"></h2>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<form id="show" >
+   <div class="form-group">
+    <label>First Name :</label> {{user.fname}}  
+  </div> 
+    <div class="form-group">
+    <label>Last Name :</label>  {{user.lname}} 
+  </div> 
+   <div class="form-group">
+    <label>Email :</label> {{user.email}} 
+  </div> 
+   <div class="form-group">
+    <label>Address :</label>
+    <textarea rows="4" cols="50" class="form-control" placeholder="address" disabled="disabled"> {{user.address}}</textarea>
+  </div>
+  
+</form>
+
+<form id="update" method="post" action="/update">
+<input type="hidden" class="form-control" placeholder="Name" name="id"  value={{user.id}}  >
+   <div class="form-group">
+    <label>First Name</label>
+    <input type="label" class="form-control" placeholder="Name" name="fname"  value={{user.fname}}  >
+  </div> 
+    <div class="form-group">
+    <label>Last Name</label>
+    <input type="label" class="form-control" placeholder="Name" name="lname"  value={{user.lname}}  >
+  </div> 
+   <div class="form-group">
+    <label>Email</label>
+    <input type="label" class="form-control" placeholder="Email" name="email"  value={{user.email}}  disabled="disabled">
+  </div> 
+   <div class="form-group">
+    <label>Address</label>
+    <textarea rows="4" cols="50" class="form-control" id="address" placeholder="address" name="address" > {{user.address}}</textarea>
+  </div>
+  <input type="button" id="submt" class="btn btn-default" value="Submit">  
+</form>
+
+<script>
+$(document).ready(function(){
+ $("#update").hide();
+ $("#edit-cancel").hide();
+ });
+ 
+ $("#edit-profile").click(function(){
+  $("#show").hide();
+  $("#edit-profile").hide();
+  $("#update").show();
+  $("#edit-cancel").show();
+ })
+ 
+  $("#edit-cancel").click(function(){
+  $("#show").show();
+  $("#edit-profile").show();
+  $("#update").hide();
+  $("#edit-cancel").hide();
+ })
+ 
+ $("#submt").click(()=>{ 
+					var data = {};  
+					data.id		 = $('input[name=id]').val();
+					data.fname   = $('input[name=fname]').val();
+					data.lname   = $('input[name=lname]').val(); 
+					data.address = $('#address').val();
+					
+					$.ajax({
+						type: 'PUT',
+						data: JSON.stringify(data),
+				        contentType: 'application/json',
+                        url: ' /profile',						
+                        success: function(data) {
+						if(data.status=='OK'){
+					 	window.location.href = "/profile";
+						}
+						else{
+						console.log(data.status);
+						   $("#msg").append("<div class='alert alert-danger' role='alert'>"+data.message+"</div>");    
+							setTimeout(function(){
+								$('.alert').fadeOut(400, function(){
+									$(this).remove();
+									})
+								;},10000
+							);
+						}
+                        }
+                    });
+ })
+ 
+ 
+ </script>

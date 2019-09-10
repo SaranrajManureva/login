@@ -1,0 +1,62 @@
+<head> 
+	<link rel="stylesheet" type="text/css" href="css/main.css"> 
+</head>
+<h2 class="page-header">Login</h2>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<form method="post" >
+<div id="msg"></div>
+  <div class="form-group">
+    <label>Email</label>
+    <input type="text" class="form-control" name="email" placeholder="Email" required>
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password" class="form-control" name="password" placeholder="Password" required>
+  </div>
+  <input type="button"  id="submt" class="btn btn-default" value="Submit">
+</form>
+
+<script>
+$(document).ready(function(){ 
+	$("#submt").click(function(event){ 
+   var email = $('input[name=email]').val();
+    var password = $('input[name=password]').val();  
+    if(password=="" || email=="" ){
+        $("#msg").append("<div class='alert alert-danger' role='alert'>All The Fields Are Required</div>");    
+        setTimeout(function(){
+            $('.alert').fadeOut(400, function(){
+                $(this).remove();
+                })
+            ;},10000
+        );
+   }
+   else{   console.log('success');
+					var data = {};
+					data.email = email;
+					data.password = password;
+					
+					$.ajax({
+						type: 'POST',
+						data: JSON.stringify(data),
+				        contentType: 'application/json',
+                        url: ' /login',						
+                        success: function(data) {
+						if(data.status=='OK'){
+						window.location.href = "/";
+						}
+						else{
+						   $("#msg").append("<div class='alert alert-danger' role='alert'>"+data.message+"</div>");    
+							setTimeout(function(){
+								$('.alert').fadeOut(400, function(){
+									$(this).remove();
+									})
+								;},10000
+							);
+						}
+                        }
+                    });
+   }
+    
+    }); 
+}); 
+</script>

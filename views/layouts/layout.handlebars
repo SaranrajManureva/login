@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User Authentication Using Node</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" href="/css/bootstrap.css" />
+	<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+	<div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right"> 
+		  <li role="presentation" ><a href="/">Home</a></li>
+            {{#if user}}
+			  <li role="presentation"><a href="/profile">Profile</a></li>
+              <li role="presentation"><a href="/logout">Logout</a></li>
+            {{else}}
+              <li role="presentation"><a href="/login">Login</a></li>
+              <li role="presentation"><a href="/registration">Registration</a></li>
+            {{/if}}
+          </ul>
+        </nav> 
+      </div>
+
+
+      <div class="row">
+        <div class="col-lg-12">
+          {{#if success_msg}}
+            <div class="alert alert-success">{{success_msg}}</div>
+          {{/if}}
+
+          {{#if error_msg}}
+            <div class="alert alert-danger">{{error_msg}}</div>
+          {{/if}}
+
+          {{#if error}}
+            <div class="alert alert-danger">{{error}}</div>
+          {{/if}}
+          
+          {{{body}}}
+        </div>
+
+        
+      </div> 
+
+    </div> 
+</body>
+</html>
+
+<script>
+
+
+    jQuery(function($) {
+     var path = window.location.href;  
+     $('ul a').each(function() { 
+      if (this.href === path) {  
+	   $(this).css("background-color", "#eef2f3");
+      } 
+     });
+    });
+
+
+</script>
