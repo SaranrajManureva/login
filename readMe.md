@@ -12,7 +12,7 @@ How To Run :-
 
 * node app //command to Run the app 
 
-* Make sure MongoDB running on the Background//command to Run the app 
+* Make sure MongoDB running on the Background 
 
 * access the site http://localhost:3000
 
