@@ -1,5 +1,5 @@
-<head> 
-	<link rel="stylesheet" type="text/css" href="css/main.css"> 
+<head>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <h2 class="page-header">Registration</h2>
 {{#if errors}}
@@ -38,16 +38,16 @@
 </form>
 
 <script>
-$(document).ready(function(){ 
-	$("#submt").click(function(event){ 
+$(document).ready(function(){
+	$("#submt").click(function(event){
     var email = $('input[name=email]').val();
     var fname  = $('input[name=fname]').val();
 	var lname  = $('input[name=lname]').val();
 	var address = $('#address').val();
     var password2  = $('input[name=password2]').val();
-    var password = $('input[name=password]').val();  
+    var password = $('input[name=password]').val();
     if(password=="" || email=="" ||password2=="" || fname=="" || lname==''||address==''){
-        $("#msg").append("<div class='alert alert-danger' role='alert'>All The Fields Are Required</div>");    
+        $("#msg").append("<div class='alert alert-danger' role='alert'>All The Fields Are Required</div>");
         setTimeout(function(){
             $('.alert').fadeOut(400, function(){
                 $(this).remove();
@@ -56,7 +56,7 @@ $(document).ready(function(){
         );
    }
    else if(password2!=password){
-  $("#msg").append("<div class='alert alert-danger' role='alert'>Password Not Matching</div>");    
+  $("#msg").append("<div class='alert alert-danger' role='alert'>Password Not Matching</div>");
         setTimeout(function(){
             $('.alert').fadeOut(400, function(){
                 $(this).remove();
@@ -64,27 +64,27 @@ $(document).ready(function(){
             ;},10000
         );
    }
-   else{  
+   else{
 					var data = {};
 					data.email = email;
 					data.password = password;
 					data.fname = fname;
 					data.lname = lname;
-					data.password2 = password2; 
+					data.password2 = password2;
 					data.address = address;
-					
+
 					$.ajax({
 						type: 'POST',
 						data: JSON.stringify(data),
 				        contentType: 'application/json',
-                        url: ' /registration',						
+                        url: ' /registration',
                         success: function(data) {
 						if(data.status=='OK'){
-						window.location.href = "/";
+						window.location.href = "/profile";
 						}
 						else{
 						console.log(data.status);
-						   $("#msg").append("<div class='alert alert-danger' role='alert'>"+data.message+"</div>");    
+						   $("#msg").append("<div class='alert alert-danger' role='alert'>"+data.message+"</div>");
 							setTimeout(function(){
 								$('.alert').fadeOut(400, function(){
 									$(this).remove();
@@ -95,9 +95,9 @@ $(document).ready(function(){
                         }
                     });
    }
-    
-    }); 
-});  
+
+    });
+});
 
 
 </script>

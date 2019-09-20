@@ -4,7 +4,9 @@
   "description": "user login and registration using node js, express js , mongoose and passport js",
   "main": "app.js",
   "scripts": {
-    "test": "login and registration "
+    "test": "login and registration ",
+    "serve": "node app.js",
+    "dev": "nodemon app.js"
   },
   "author": "Saranraj B",
   "license": "ISC",
@@ -15,13 +17,16 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
     "express-handlebars": "^3.0.0",
-    "express-session": "^1.15.6", 
+    "express-session": "^1.15.6",
     "mongoose": "^5.0.7",
     "passport": "^0.4.0",
+    "passport-facebook": "^3.0.0",
+    "passport-google-oauth20": "^2.0.0",
     "passport-local": "^1.0.0",
+    "passport-twitter": "^1.0.4",
     "path": "^0.12.7"
   },
   "devDependencies": {
-    "nodemon": "^1.15.1"
+    "nodemon": "^1.19.2"
   }
 }

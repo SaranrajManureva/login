@@ -10,17 +10,17 @@
 	<div class="container">
       <div class="header clearfix">
         <nav>
-          <ul class="nav nav-pills pull-right"> 
+          <ul class="nav nav-pills pull-right">
 		  <li role="presentation" ><a href="/">Home</a></li>
             {{#if user}}
 			  <li role="presentation"><a href="/profile">Profile</a></li>
               <li role="presentation"><a href="/logout">Logout</a></li>
             {{else}}
               <li role="presentation"><a href="/login">Login</a></li>
-              <li role="presentation"><a href="/registration">Registration</a></li>
+            <!---  <li role="presentation"><a href="/registration">Registration</a></li> --->
             {{/if}}
           </ul>
-        </nav> 
+        </nav>
       </div>
 
 
@@ -37,14 +37,14 @@
           {{#if error}}
             <div class="alert alert-danger">{{error}}</div>
           {{/if}}
-          
+
           {{{body}}}
         </div>
 
-        
-      </div> 
 
-    </div> 
+      </div>
+
+    </div>
 </body>
 </html>
 
@@ -52,11 +52,11 @@
 
 
     jQuery(function($) {
-     var path = window.location.href;  
-     $('ul a').each(function() { 
-      if (this.href === path) {  
+     var path = window.location.href;
+     $('ul a').each(function() {
+      if (this.href === path) {
 	   $(this).css("background-color", "#eef2f3");
-      } 
+      }
      });
     });
 
