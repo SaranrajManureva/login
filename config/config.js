@@ -4,8 +4,8 @@ class config {
     this.db = "mongodb://localhost:27017/userloginregdb";
     this.apiPort = 3000;
     this.facebookAPI = {
-      clientID: "485948575520768", // your App ID
-      clientSecret: "cf24322573d54cf6de1bf345a58684fb", // your App Secret
+      clientID: "", // your App ID
+      clientSecret: "", // your App Secret
       callbackURL: "https://tinyurl.com/zhawz/auth/facebook/callback",
       profileURL:
         "https://graph.facebook.com/v2.5/me?fields=first_name,last_name,email",
@@ -13,14 +13,14 @@ class config {
     };
     this.googleAPI = {
       clientID:
-        "842811596053-f5apva010go6l45a0mu0sh294jev5tgt.apps.googleusercontent.com",
-      clientSecret: "c9lr-flxx9Js6m5WHpoUOcUN",
+        "",
+      clientSecret: "c9lr-",
       callbackURL: "/auth/google/callback"
     };
 
     this.twitterApi = {
-      consumerKey: "r61MJ5H6NRNNRGoLeLCj1q9Hb",
-      consumerSecret: "YgqBg5CRPoig5SxM51PlRjpuJURA4NBhWLyaVcJmz2u5vcMg8u",
+      consumerKey: "",
+      consumerSecret: "",
       callbackURL: "http://127.0.0.1:3000/auth/twitter/callback"
     };
 
